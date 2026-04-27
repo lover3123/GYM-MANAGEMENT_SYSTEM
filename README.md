@@ -89,6 +89,17 @@ npx serve frontend
 
 ---
 
+## 🚀 Deployment & Hosting
+
+The application is architected for seamless cloud deployment. For the current live environment, the following stack is used:
+
+*   **Version Control:** Hosted on **GitHub** ([lover3123/GYM-MANAGEMENT_SYSTEM](https://github.com/lover3123/GYM-MANAGEMENT_SYSTEM)) for automated CI/CD.
+*   **Database:** Hosted on **Aiven MySQL** (Free Tier). This provides a managed, secure relational database with 99.9% uptime.
+*   **Backend (API):** Deployed on **Render** (Web Services). Render automatically pulls from GitHub and redeploys on every push.
+*   **Frontend:** Deployed on **Vercel**. Provides ultra-fast content delivery (CDN) and global availability.
+
+---
+
 ## ER Diagram
 
 See [ER_DIAGRAM.md](./ER_DIAGRAM.md) for the full entity-relationship diagram and database design notes.

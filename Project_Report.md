@@ -66,9 +66,16 @@ The project was developed using a structured, Agile-inspired Software Developmen
 *   **Design System:** The UI was designed from scratch using a professional, institutional theme. It features a deep navy blue sidebar (`#0d1b6e`), gold accents (`#f9a825`), and clean white data cards. Custom CSS variables and grid layouts ensure the interface is fully responsive across mobile, tablet, and desktop viewports.
 *   **Data Visualization:** Integrated `Chart.js` to parse the JSON data returned from the `/api/payments/monthly` endpoint and render an interactive, responsive bar chart visualizing revenue trends over time.
 
+### D. Deployment & Cloud Hosting
+The system was engineered with a modern, distributed cloud deployment strategy to ensure high availability and scalability:
+*   **Database Hosting (Aiven):** The MySQL database was migrated from a local instance to **Aiven for MySQL**. This provides a managed cloud environment with automatic backups, encrypted connections, and high performance.
+*   **Backend Hosting (Render):** The Node.js API is hosted on **Render**. It utilizes an automated CI/CD pipeline connected directly to the project's GitHub repository. Every code commit triggers an automated build and zero-downtime redeployment.
+*   **Frontend Hosting (Vercel):** The user interface is deployed on **Vercel's Edge Network**, ensuring the single-page application loads instantly for users globally by serving files from the nearest geographical server.
+*   **Environment Configuration:** All sensitive credentials (database URIs, JWT secrets) are managed through encrypted environment variables on the hosting platforms, ensuring they are never exposed in the source code.
+
 ---
 
-## 6. RESULTS AND DISCUSSION
+## 7. RESULTS AND DISCUSSION
 The successful deployment and testing of the FitPro Gym Management System yielded a fully functional, enterprise-ready platform that met and exceeded all predefined objectives.
 
 1.  **Dashboard Analytics Performance:** The system successfully aggregates massive amounts of relational data from the MySQL database in real-time. The dashboard instantly displays total revenue, active memberships, and dynamic charting without noticeable latency, validating the use of SQL Views.
@@ -78,7 +85,7 @@ The successful deployment and testing of the FitPro Gym Management System yielde
 
 ---
 
-## 7. SUMMARY AND FUTURE SCOPE
+## 8. SUMMARY AND FUTURE SCOPE
 The Gym Management System stands as a modern, highly scalable software solution tailored explicitly for the needs of contemporary fitness centers. By migrating from archaic, manual operations to a centralized digital platform, gym administrators gain complete, granular control over their business metrics. The project successfully integrated a dynamic frontend with a highly secure Node.js API and an optimized, automated MySQL database. 
 
 The extensive use of advanced database concepts—like triggers, views, and stored procedures—not only optimized application performance but also clearly demonstrated the application of enterprise-level software engineering principles.
@@ -90,7 +97,7 @@ The extensive use of advanced database concepts—like triggers, views, and stor
 
 ---
 
-## 8. REFERENCES
+## 9. REFERENCES
 1.  **Node.js Official Documentation.** (Architecture & Asynchronous I/O). Retrieved from: https://nodejs.org/en/docs/
 2.  **Express.js Framework API Reference.** (Routing & Middleware handling). Retrieved from: https://expressjs.com/
 3.  **MySQL 8.0 Reference Manual.** (Normalization, Stored Procedures, Triggers). Retrieved from: https://dev.mysql.com/doc/refman/8.0/en/
