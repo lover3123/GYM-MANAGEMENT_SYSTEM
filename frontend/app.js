@@ -3,7 +3,7 @@
 //  Connects to Express/MySQL backend on http://localhost:5000
 // ============================================================
 
-const API = 'http://localhost:5000/api';
+const API = 'https://gym-management-system-4ti5.onrender.com/api';
 let TOKEN = localStorage.getItem('gms_token') || null;
 let revenueChart = null;
 
