@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitPro GMS — Gym Management System</title>
+  <meta name="description" content="FitPro Gym Management System — manage members, trainers, packages, and payments from one sleek dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     LOGIN SCREEN
+============================================================ -->
+<div id="login-screen" class="login-screen">
+  <!-- Left branding panel -->
+  <div class="login-left-panel">
+    <div class="login-brand">
+      <div class="login-brand-logo">
+        <span style="font-size:52px">🏋️</span>
+      </div>
+      <h1 class="login-brand-title">FitPro <span>GMS</span></h1>
+      <p class="login-brand-sub">Gym Management System</p>
+      <div class="login-brand-features">
+        <div class="lbf-item">📊 Real-time Dashboard Analytics</div>
+        <div class="lbf-item">👥 Member &amp; Trainer Management</div>
+        <div class="lbf-item">💳 Payment &amp; Membership Tracking</div>
+        <div class="lbf-item">📦 Flexible Package Plans</div>
+      </div>
+    </div>
+    <div class="login-brand-footer">Gym Management System &copy; 2025</div>
+  </div>
+
+  <!-- Right login/signup form -->
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="logo-icon">🏋️</span>
+      <span class="logo-text">FitPro <span class="logo-accent">GMS</span></span>
+    </div>
+    
+    <!-- Login Form -->
+    <div id="login-section">
+      <h1 class="login-title">Welcome Back</h1>
+      <p class="login-sub">Sign in to your admin dashboard</p>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label>Username</label>
+          <input id="l-username" type="text" placeholder="admin" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label style="display: flex; justify-content: space-between;">
+            Password 
+            <a href="#" id="forgot-pw-link" style="font-size: 12px; color: var(--primary); text-decoration: none;">Forgot Password?</a>
+          </label>
+          <input id="l-password" type="password" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <div id="login-error" class="login-error hidden"></div>
+        <button type="submit" class="btn btn-primary btn-full" id="login-btn">
+          <span>Sign In</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </form>
+      <p class="login-hint">Don't have an account? <a href="#" id="show-signup-btn" style="color: var(--primary); font-weight: bold; text-decoration: none;">Sign Up</a></p>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-section" class="hidden">
+      <h1 class="login-title">Create Account</h1>
+      <p class="login-sub">Register a new administrator</p>
+      <form id="signup-form" class="login-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input id="s-fullname" type="text" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input id="s-email" type="email" placeholder="john@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input id="s-username" type="text" placeholder="admin" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input id="s-password" type="password" placeholder="••••••••" required />
+        </div>
+        <div id="signup-error" class="login-error hidden"></div>
+        <button type="submit" class="btn btn-primary btn-full" id="signup-btn">
+          <span>Sign Up</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </form>
+      <p class="login-hint">Already have an account? <a href="#" id="show-login-btn" style="color: var(--primary); font-weight: bold; text-decoration: none;">Sign In</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN APP
+============================================================ -->
+<div id="app" class="app hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🏋️</span>
+      <span class="logo-text">FitPro <span class="logo-accent">GMS</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="dashboard">
+        <span class="nav-icon">📊</span><span class="nav-label">Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="members">
+        <span class="nav-icon">👥</span><span class="nav-label">Members</span>
+      </a>
+      <a href="#" class="nav-item" data-page="trainers">
+        <span class="nav-icon">💪</span><span class="nav-label">Trainers</span>
+      </a>
+      <a href="#" class="nav-item" data-page="packages">
+        <span class="nav-icon">📦</span><span class="nav-label">Packages</span>
+      </a>
+      <a href="#" class="nav-item" data-page="memberships">
+        <span class="nav-icon">🪪</span><span class="nav-label">Memberships</span>
+      </a>
+      <a href="#" class="nav-item" data-page="payments">
+        <span class="nav-icon">💳</span><span class="nav-label">Payments</span>
+      </a>
+    </nav>
+
+    <button class="sidebar-logout" id="logout-btn">
+      <span>⚙️</span><span>Logout</span>
+    </button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="hamburger" id="hamburger">☰</button>
+      <div class="topbar-title" id="page-title">Dashboard</div>
+      <div class="topbar-right">
+        <div class="topbar-admin">
+          <div class="admin-avatar">A</div>
+          <span id="admin-name">Admin</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGES -->
+
+    <!-- Dashboard -->
+    <section class="page active" id="page-dashboard">
+      <div class="page-header">
+        <h2>Dashboard Overview</h2>
+        <p>Welcome back! Here's what's happening at your gym.</p>
+      </div>
+
+      <div class="stat-grid" id="stat-grid">
+        <div class="stat-card stat-purple">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-total">—</div>
+            <div class="stat-label">Total Members</div>
+          </div>
+          <div class="stat-bg-icon">👥</div>
+        </div>
+        <div class="stat-card stat-green">
+          <div class="stat-icon">✅</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-active">—</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat-bg-icon">✅</div>
+        </div>
+        <div class="stat-card stat-blue">
+          <div class="stat-icon">🪪</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-memberships">—</div>
+            <div class="stat-label">Active Memberships</div>
+          </div>
+          <div class="stat-bg-icon">🪪</div>
+        </div>
+        <div class="stat-card stat-gold">
+          <div class="stat-icon">💰</div>
+          <div class="stat-info">
+            <div class="stat-value" id="stat-revenue">—</div>
+            <div class="stat-label">Total Revenue</div>
+          </div>
+          <div class="stat-bg-icon">💰</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>📈 Monthly Revenue</h3>
+          </div>
+          <canvas id="revenue-chart" height="200"></canvas>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>⚠️ Expiring Soon</h3></div>
+          <div id="expiring-list" class="expiring-list">Loading…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Members -->
+    <section class="page" id="page-members">
+      <div class="page-header">
+        <h2>Members</h2>
+        <button class="btn btn-primary" id="add-member-btn">+ Add Member</button>
+      </div>
+      <div class="card">
+        <div class="table-toolbar">
+          <input type="search" class="search-input" id="member-search" placeholder="Search members…" />
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="members-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Name</th><th>Contact</th><th>Email</th>
+                <th>Package</th><th>Trainer</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="members-tbody"><tr><td colspan="8" class="loading-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trainers -->
+    <section class="page" id="page-trainers">
+      <div class="page-header">
+        <h2>Trainers</h2>
+        <button class="btn btn-primary" id="add-trainer-btn">+ Add Trainer</button>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table class="data-table" id="trainers-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Name</th><th>Phone</th><th>Speciality</th>
+                <th>Salary</th><th>Members</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="trainers-tbody"><tr><td colspan="8" class="loading-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="page" id="page-packages">
+      <div class="page-header">
+        <h2>Packages</h2>
+        <button class="btn btn-primary" id="add-package-btn">+ Add Package</button>
+      </div>
+      <div id="packages-grid" class="packages-grid">Loading…</div>
+    </section>
+
+    <!-- Memberships -->
+    <section class="page" id="page-memberships">
+      <div class="page-header">
+        <h2>Memberships</h2>
+        <button class="btn btn-primary" id="enroll-btn">+ Enroll Member</button>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Member</th><th>Package</th><th>Trainer</th>
+                <th>Start</th><th>End</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="memberships-tbody"><tr><td colspan="7" class="loading-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payments -->
+    <section class="page" id="page-payments">
+      <div class="page-header">
+        <h2>Payments</h2>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Member</th><th>Package</th><th>Amount</th>
+                <th>Type</th><th>Date</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="payments-tbody"><tr><td colspan="7" class="loading-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============================================================
+     MODALS
+============================================================ -->
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="modal glass" id="modal-box">
+    <div class="modal-header">
+      <h3 id="modal-title">Modal</h3>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

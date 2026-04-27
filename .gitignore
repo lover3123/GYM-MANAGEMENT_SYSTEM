@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment Variables
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Project Docs (Optional to ignore if you don't want word docs in repo)
+*.docx
+render_test_table/
+rendered_improved_report/
+rendered_improved_report_v2/
+rendered_improved_report_v3/
