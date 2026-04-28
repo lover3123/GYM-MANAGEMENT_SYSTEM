@@ -1,6 +1,6 @@
 # 🏋️ FitPro Gym Management System
 
-> Inspired by [prashant333/gym-management](https://github.com/prashant333/gym-management) — reimagined with a full MySQL schema, Node.js REST API, JWT auth, and a premium dark-mode dashboard.
+) — reimagined with a full MySQL schema, Node.js REST API, JWT auth, and a premium dark-mode dashboard.
 
 ---
 
